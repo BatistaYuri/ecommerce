@@ -2,42 +2,75 @@
   "name": "ecommerce",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
+    "build": "webpack --config webpack/webpack.config.js --env env=prod",
+    "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.36",
-    "@types/react": "^18.2.13",
-    "@types/react-dom": "^18.2.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "react-scripts": "5.0.1"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/plugin-transform-runtime": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
+    "@babel/runtime": "^7.22.5",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "@types/react": "^18.2.13",
+    "@types/react-dom": "^18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.60.0",
+    "@typescript-eslint/parser": "^5.60.0",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "html-webpack-plugin": "^5.5.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "react-refresh": "^0.14.0",
+    "style-loader": "^3.3.3",
+    "typescript": "^4.1.5",
+    "webpack": "^5.87.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.9.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
     ]
   }
 }
